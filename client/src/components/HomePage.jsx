@@ -256,8 +256,8 @@ function HomePage({ onGetStarted }) {
             />
           </div>
 
-          <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-[var(--lq-danger-border)] bg-[var(--lq-danger-soft)] p-5 sm:flex-row sm:items-center sm:gap-5 sm:p-6">
-            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-[var(--lq-danger-border)] bg-[var(--lq-surface)] text-[var(--lq-danger-text)]">
+          <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-[var(--lq-border)] bg-[var(--lq-surface)] p-5 sm:flex-row sm:items-center sm:gap-5 sm:p-6">
+            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-[var(--lq-border)] bg-[var(--lq-bg-soft)] text-[var(--lq-primary)]">
               <ShieldCheckIcon />
             </div>
             <div className="min-w-0">
