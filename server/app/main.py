@@ -28,5 +28,5 @@ app.include_router(generate_router)
 def health():
     return {
         "status": "ok",
-        "service": "LazyQL",
+        "service": "QueryFlow",
     }
