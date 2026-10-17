@@ -6,9 +6,7 @@ QueryFlow currently supports SQLite and PostgreSQL. SQL generation uses Google G
 
 ## Demo
 
-- **Web app:** [lazy-ql.vercel.app](https://lazy-ql.vercel.app)
-- **API:** [lazyql.onrender.com](https://lazyql.onrender.com)
-- **API docs:** [Interactive documentation](https://lazyql.onrender.com/docs)
+- **Web app:**
 
 ## Features
 
