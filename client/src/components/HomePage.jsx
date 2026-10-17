@@ -218,76 +218,57 @@ function HomePage({ onGetStarted }) {
       {/* HOW IT WORKS */}
       <section
         id="how-it-works"
-        className="border-t border-[var(--lq-border)] bg-[var(--lq-bg-soft)] px-6 py-24"
+        className="border-t border-[var(--lq-border)] bg-[var(--lq-bg-soft)] px-6 py-20 sm:py-24"
       >
         <div className="mx-auto max-w-7xl">
-
-          <div className="text-center">
-
-            <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[var(--lq-primary)]">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="font-mono text-xs font-medium uppercase tracking-[0.24em] text-[var(--lq-primary)]">
               HOW QUERYFLOW WORKS
             </div>
 
-            <h2 className="mt-3 font-mono text-3xl font-bold text-[var(--lq-text)] md:text-4xl">
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--lq-text)] sm:text-4xl md:text-5xl">
               From question to SQL
             </h2>
 
-            <p className="mx-auto mt-4 max-w-2xl font-mono text-xs leading-6 text-[var(--lq-text-soft)]">
-              Connect your database, ask questions in natural
-              language, review the generated SQL, and execute it.
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[var(--lq-text-soft)]">
+              Connect your database, ask questions in natural language, review the generated SQL, and execute it.
             </p>
-
           </div>
 
-          <div className="mt-12 grid gap-4 md:grid-cols-3">
-
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
             <HowItWorksCard
               number="01"
               title="Connect"
               text="Provide your database type and connection URL."
+              icon="database"
             />
-
             <HowItWorksCard
               number="02"
               title="Ask"
               text="Describe what you need in natural language."
+              icon="chat"
             />
-
             <HowItWorksCard
               number="03"
               title="Review & Execute"
               text="Review the generated SQL and execute it against your database."
+              icon="run"
             />
-
           </div>
 
-          {/* SAFETY */}
-          <div className="mt-5 rounded-xl border border-[var(--lq-border)] bg-[var(--lq-surface)] p-6 shadow-sm">
-
-            <div className="flex items-start gap-4">
-
-              <div className="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-[var(--lq-primary)] bg-[var(--lq-primary-soft)] font-mono text-sm text-[var(--lq-primary)]">
-                ✓
-              </div>
-
-              <div>
-
-                <div className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[var(--lq-text)]">
-                  Review before execution
-                </div>
-
-                <p className="mt-2 max-w-3xl font-mono text-[10px] leading-5 text-[var(--lq-text-soft)]">
-                  Generated SQL is shown before execution.
-                  Destructive operations can require confirmation
-                  before changing database data.
-                </p>
-
-              </div>
-
+          <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-[var(--lq-danger-border)] bg-[var(--lq-danger-soft)] p-5 sm:flex-row sm:items-center sm:gap-5 sm:p-6">
+            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-[var(--lq-danger-border)] bg-[var(--lq-surface)] text-[var(--lq-danger-text)]">
+              <ShieldCheckIcon />
             </div>
-
+            <div className="min-w-0">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-[var(--lq-text)]">
+                Review before execution
+              </h3>
+              <p className="mt-1.5 text-sm leading-6 text-[var(--lq-text-soft)]">
+                Generated SQL is shown before execution. QueryFlow only allows read-only SELECT queries.
+              </p>
+            </div>
           </div>
-
         </div>
       </section>
 
@@ -317,21 +298,68 @@ function Feature({ number, title, text }) {
 
 function HowItWorksCard({ number, title, text }) {
   return (
-    <div className="rounded-xl border border-[var(--lq-border)] bg-[var(--lq-surface)] p-6 shadow-sm transition hover:-translate-y-1 hover:border-[var(--lq-primary)]">
-
-      <div className="font-mono text-[9px] font-semibold text-[var(--lq-primary)]">
-        {number}
+    <article className="group rounded-2xl border border-[var(--lq-border)] bg-[var(--lq-surface)] p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-[var(--lq-primary)] hover:shadow-md sm:p-7">
+      <div className="flex items-center justify-between">
+        <div className="grid h-14 w-14 place-items-center rounded-2xl bg-[var(--lq-primary-soft)] text-[var(--lq-primary)]">
+          {iconForStep(title)}
+        </div>
+        <span className="font-mono text-sm font-medium tracking-widest text-[var(--lq-primary)]">
+          {number}
+        </span>
       </div>
 
-      <h3 className="mt-4 font-mono text-sm font-semibold uppercase tracking-wider text-[var(--lq-text)]">
+      <h3 className="mt-7 text-lg font-semibold capitalize tracking-tight text-[var(--lq-text)]">
         {title}
       </h3>
 
-      <p className="mt-3 font-mono text-[10px] leading-5 text-[var(--lq-text-soft)]">
+      <p className="mt-2.5 text-sm leading-6 text-[var(--lq-text-soft)]">
         {text}
       </p>
+    </article>
+  );
+}
 
-    </div>
+function iconForStep(title) {
+  if (title === "Connect") return <DatabaseIcon />;
+  if (title === "Ask") return <ChatIcon />;
+  return <PlayCheckIcon />;
+}
+
+function DatabaseIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-7 w-7" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <ellipse cx="12" cy="5" rx="8" ry="3" />
+      <path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" />
+    </svg>
+  );
+}
+
+function ChatIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-7 w-7" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2v-5.5A7.5 7.5 0 1 1 20 11.5Z" />
+      <circle cx="8" cy="11.5" r=".8" fill="currentColor" stroke="none" />
+      <circle cx="12.5" cy="11.5" r=".8" fill="currentColor" stroke="none" />
+      <circle cx="17" cy="11.5" r=".8" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function PlayCheckIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-7 w-7" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m5 3 12 9-12 9V3Z" />
+      <path d="m14 18 2.2 2.2L21 15.5" />
+    </svg>
+  );
+}
+
+function ShieldCheckIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-6 w-6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
   );
 }
 
