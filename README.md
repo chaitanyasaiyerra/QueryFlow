@@ -6,7 +6,9 @@ QueryFlow currently supports SQLite and PostgreSQL. SQL generation uses Google G
 
 ## Demo
 
-- **Web app:**
+Watch QueryFlow connect to a database, generate SQL from a question, and show the results.
+
+https://github.com/user-attachments/assets/f3ff1966-570f-495c-959c-d98a3b306cdc
 
 ## Features
 
