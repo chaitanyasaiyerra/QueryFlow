@@ -8,7 +8,8 @@ QueryFlow currently supports SQLite and PostgreSQL. SQL generation uses Google G
 
 Watch QueryFlow connect to a database, generate SQL from a question, and show the results.
 
-https://github.com/user-attachments/assets/f3ff1966-570f-495c-959c-d98a3b306cdc
+https://github.com/user-attachments/assets/da751a48-b680-466a-8d17-27a0b2dae840
+
 
 ## Features
 
